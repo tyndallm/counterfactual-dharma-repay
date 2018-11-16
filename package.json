@@ -1,0 +1,18 @@
+{
+  "name": "counterfactual-dharma-repayment",
+  "version": "0.0.1",
+  "description": "Counterfactual loan repayment for Dharma",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "author": "Matt Tyndall (mattctyndall@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "@dharmaprotocol/contracts": "^0.1.24",
+    "openzeppelin-solidity": "^2.0.0"
+  }
+}
