@@ -5,6 +5,13 @@ pragma solidity ^0.4.24;
  * https://github.com/austintgriffith/counterfactual-token-repayment/blob/master/contracts/Sweeper/Sweeper.sol
  *
  * Upon creation, this contract will make a repayment on behalf of a debtor
+ *
+ * agreementId - Dharma loan agreement ID
+ * repaymentRouter - Address of Dharma's RepaymentRouter contract
+ * tokenTransferProxy - Address of Dharma's token proxy contract
+ * tokenAddress - Address of ERC20 token being repaid
+ * gasRefund - Address that any remaining ETH should be returned to
+ * amount - Amount of ERC20 token being repaid
  */
 contract DharmaSweeper {
 
@@ -13,6 +20,7 @@ contract DharmaSweeper {
         address repaymentRouter,
         address tokenTransferProxy,
         address tokenAddress,
+        address gasRefund,
         uint256 amount
     )
         public
@@ -22,7 +30,7 @@ contract DharmaSweeper {
         // make the repayment
         IRepaymentRouter(repaymentRouter).repay(agreementId, amount, tokenAddress);
         // destroy contract
-        selfdestruct(tokenTransferProxy);
+        selfdestruct(gasRefund);
     }
 }
 
